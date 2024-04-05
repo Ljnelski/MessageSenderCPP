@@ -5,9 +5,7 @@ void Client::start()
 {
 	printf("This is the Client\n");
 
-	char recvbuf[DEFAULT_BUFLEN];
 	int iResult;
-	int recvbuflen = DEFAULT_BUFLEN;
 
 	// Initialize Winsock
 	iResult = WSAStartup(MAKEWORD(2, 2), &_wsaData);
