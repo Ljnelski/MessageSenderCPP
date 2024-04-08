@@ -5,6 +5,7 @@
 #pragma comment (lib, "Mswsock.lib")
 #pragma comment (lib, "AdvApi32.lib")
 
+#define DEFAULT_IP_ADDRESS "PUT_YOUR_HOST_ADDRESS_HERE"
 #define DEFAULT_PORT "8645"
 #define MESSAGE_SIZE 200
 
@@ -19,7 +20,6 @@ int main()
 
 	std::string input;	
 	
-	connection.printAddress();
 
 	std::cout << "\n\n\nWelcome To Message Sender!!!!\n";
 
@@ -42,6 +42,7 @@ int main()
 			std::cin.ignore();
 
 			connection.CreateAddressInfo(input, DEFAULT_PORT);
+			connection.printAddress();
 			connection.Connect();
 			connection.SendMsg(MESSAGE_SIZE);
 			connection.RecvMsg(MESSAGE_SIZE);
@@ -51,7 +52,8 @@ int main()
 		// Listen for Connections
 		else if (input[0] == 'l')
 		{
-			connection.CreateAddressInfo("127.0.0.1", DEFAULT_PORT);
+			connection.CreateAddressInfo(DEFAULT_IP_ADDRESS, DEFAULT_PORT);
+			connection.printAddress();
 			connection.Listen();
 			connection.Accept();
 			connection.RecvMsg(MESSAGE_SIZE);
